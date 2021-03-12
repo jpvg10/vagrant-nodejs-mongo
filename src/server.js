@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://127.0.0.1/myapp', { useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1/myapp', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', () => {
   console.log('Database connected');
