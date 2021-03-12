@@ -2,9 +2,9 @@
 
 This Vagrant machine contains:
 
-- Ubuntu 18.04
-- Node.js 10.15.3
-- MongoDB 4.0.9
+- Ubuntu 20.04
+- Node.js 14
+- MongoDB 4.4
 
 ## How to use
 
@@ -12,7 +12,7 @@ This Vagrant machine contains:
 >
 > I have only tested this virtual machine using Windows 10 as host
 
-- Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads.html)
+- Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://www.vagrantup.com/downloads)
 - Open up a terminal (if you are on Windows, do it **as administrator**)
 - Clone this repository
 - Run `vagrant up` in the folder that holds this repository
@@ -36,15 +36,15 @@ The app is now running on the virtual machine.
 
 ### Networking
 
-The virtual machine's port **3000** is mapped to the host machine's port **3000**. If you go to your web browser and type `http://localhost:3000` you should see the sample app that is running inside the virtual machine.
+The virtual machine's port **3000** is mapped to the host machine's port **3001**. If you go to your web browser and type `http://localhost:3001` you should see the sample app that is running inside the virtual machine.
 
-Also port **27017** is mapped to the host's **27017**, so you can use a tool like [Robo 3T](https://robomongo.org/) in the host to explore the Mongo database running in the virtual machine. To do that, do the following while logged into the virtual machine:
+Also port **27017** is mapped to the host's **27018**, so you can use a tool like [Robo 3T](https://robomongo.org/) or [MongoDB Compass](https://www.mongodb.com/products/compass) in the host to explore the Mongo database running in the virtual machine. To do that, do the following while logged into the virtual machine:
 
 - `sudo nano /etc/mongod.conf`
 - Change the line `bindIp: 127.0.0.1` to `bindIp: 0.0.0.0` and save the file
-- Restart the Mongo service with `sudo systemctl restart mongod.service`
+- Restart the Mongo service with `sudo systemctl restart mongod`
 
-Now you can connect to Mongo from the host using the address `localhost:27017`.
+Now you can connect to Mongo from the host using the address `mongodb://localhost:27018`.
 
 ### Development
 
@@ -56,4 +56,4 @@ Also because of the shared folders, you can use your favorite text editor in the
 
 ## Further reading
 
-If you are not familiar with Vagrant or would like to learn more about it, you can read their official guides [here](https://www.vagrantup.com/intro/getting-started/index.html).
+If you are not familiar with Vagrant or would like to learn more about it, you can read their official guides [here](https://learn.hashicorp.com/tutorials/vagrant/getting-started-index).
